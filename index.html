@@ -116,6 +116,66 @@
             box-shadow: 0 6px 20px rgba(88, 101, 242, 0.6);
         }
 
+        /* Stats Section */
+        .container-stats {
+            width: 100%;
+            display: flex;
+            justify-content: center;
+            margin: 2rem 0;
+        }
+
+        .stats-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            padding: 1.5rem;
+            border-radius: 15px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 2rem;
+            width: 90%;
+            max-width: 800px;
+        }
+
+        .stat-item {
+            text-align: center;
+            padding: 1rem 2rem;
+            flex: 0 1 auto;
+            min-width: 200px;
+        }
+
+        .stat-item i {
+            font-size: 2.5rem;
+            color: #fff;
+            margin-bottom: 0.5rem;
+            display: block;
+        }
+
+        .stat-number {
+            display: block;
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #fff;
+            margin: 0.5rem 0;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+
+        .stat-label {
+            display: block;
+            font-size: 1.1rem;
+            color: rgba(255, 255, 255, 0.9);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        @media (min-width: 768px) {
+            .stats-container {
+                width: 80%;
+                gap: 4rem;
+            }
+        }
+
         /* Features Section */
         .features {
             background: white;
@@ -358,6 +418,25 @@
     <section id="inicio" class="hero">
         <div class="container">
             <h1 class="fade-in">Opside Bot</h1>
+            <div class="container-stats fade-in">
+                <div class="stats-container">
+                    <div class="stat-item">
+                        <i class="fas fa-server"></i>
+                        <span class="stat-number">50+</span>
+                        <span class="stat-label">Servidores</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-users"></i>
+                        <span class="stat-number">10,000+</span>
+                        <span class="stat-label">Usuarios</span>
+                    </div>
+                    <div class="stat-item">
+                        <i class="fas fa-shield-alt"></i>
+                        <span class="stat-number">25,000+</span>
+                        <span class="stat-label">Acciones</span>
+                    </div>
+                </div>
+            </div>
             <p class="fade-in">Controla tu servidor Minecraft directamente desde Discord</p>
             <p class="fade-in">Gestiona jugadores, ejecuta comandos y mantén tu servidor bajo control sin salir de Discord</p>
             <a href="https://discord.com/oauth2/authorize?client_id=1138233578795319316&scope=bot&permissions=8" class="cta-button fade-in">
@@ -546,6 +625,28 @@
                 }
             });
         });
+
+        // Obtener estadísticas reales del bot
+        async function getBotStats() {
+            try {
+                const response = await fetch('/stats.json');
+                const data = await response.json();
+                
+                // Actualizar las estadísticas en la página
+                document.querySelector('.stat-number:nth-child(1)').textContent = data.guilds + '+';
+                document.querySelector('.stat-number:nth-child(2)').textContent = data.users + '+';
+                document.querySelector('.stat-number:nth-child(3)').textContent = data.actions + '+';
+            } catch (error) {
+                console.error('Error al obtener estadísticas:', error);
+                // Si hay error, mostrar números por defecto
+                document.querySelector('.stat-number:nth-child(1)').textContent = '10+';
+                document.querySelector('.stat-number:nth-child(2)').textContent = '1,000+';
+                document.querySelector('.stat-number:nth-child(3)').textContent = '2,500+';
+            }
+        }
+
+        // Llamar a la función cuando se carga la página
+        window.addEventListener('load', getBotStats);
 
         // Intersection Observer for fade-in animations
         const observerOptions = {
