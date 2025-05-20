@@ -1,0 +1,454 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sugerir Función - Opside Bot</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Sugiere una nueva función para Opside Bot - Controla tu servidor Minecraft desde Discord">
+    <meta name="keywords" content="Opside Bot, Discord, Minecraft, RCON, Bot, Administración, Servidor">
+    <meta name="author" content="Opside Bot">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5865f2;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #5865f2;
+        }
+
+        /* Suggest Section */
+        .suggest-section {
+            background: white;
+            padding: 80px 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .suggest-content {
+            max-width: 800px;
+            margin: 0 auto;
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+        }
+
+        .suggest-section h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 2rem;
+        }
+
+        .suggest-form {
+            display: grid;
+            gap: 1.5rem;
+        }
+
+        .form-group {
+            display: flex;
+            flex-direction: column;
+            gap: 0.5rem;
+        }
+
+        .form-group label {
+            font-weight: 500;
+            color: #333;
+        }
+
+        .form-group input,
+        .form-group textarea,
+        .form-group select {
+            padding: 0.8rem;
+            border: 1px solid #dee2e6;
+            border-radius: 8px;
+            font-family: inherit;
+            font-size: 1rem;
+            transition: border-color 0.3s;
+        }
+
+        .form-group input:focus,
+        .form-group textarea:focus,
+        .form-group select:focus {
+            outline: none;
+            border-color: #5865f2;
+        }
+
+        .form-group textarea {
+            min-height: 150px;
+            resize: vertical;
+        }
+
+        .submit-button {
+            background: #5865f2;
+            color: white;
+            padding: 1rem;
+            border: none;
+            border-radius: 8px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .submit-button:hover {
+            background: #4752c4;
+            transform: translateY(-2px);
+        }
+
+        .submit-button:disabled {
+            background: #ccc;
+            cursor: not-allowed;
+            transform: none;
+        }
+
+        .success-message {
+            display: none;
+            background: #28a745;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        .error-message {
+            display: none;
+            background: #dc3545;
+            color: white;
+            padding: 1rem;
+            border-radius: 8px;
+            text-align: center;
+            margin-top: 1rem;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2f36;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #5865f2;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #5865f2;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fab fa-discord"></i>
+                Opside Bot
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#características">Características</a></li>
+                <li><a href="index.html#planes">Planes</a></li>
+                <li><a href="index.html#comandos">Comandos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- Suggest Section -->
+    <section class="suggest-section">
+        <div class="container">
+            <div class="suggest-content">
+                <h1>Sugerir una Nueva Función</h1>
+                <form id="suggestForm" class="suggest-form">
+                    <div class="form-group">
+                        <label for="name">Nombre</label>
+                        <input type="text" id="name" name="name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="discord">Discord Username</label>
+                        <input type="text" id="discord" name="discord" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="type">Tipo de Sugerencia</label>
+                        <select id="type" name="type" required>
+                            <option value="">Selecciona un tipo</option>
+                            <option value="nueva">Nueva Función</option>
+                            <option value="mejora">Mejora de Función Existente</option>
+                            <option value="bug">Corrección de Bug</option>
+                            <option value="otro">Otro</option>
+                        </select>
+                    </div>
+                    <div class="form-group">
+                        <label for="title">Título de la Sugerencia</label>
+                        <input type="text" id="title" name="title" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="description">Descripción Detallada</label>
+                        <textarea id="description" name="description" required></textarea>
+                    </div>
+                    <div class="form-group">
+                        <label for="priority">Prioridad</label>
+                        <select id="priority" name="priority" required>
+                            <option value="">Selecciona una prioridad</option>
+                            <option value="baja">Baja</option>
+                            <option value="media">Media</option>
+                            <option value="alta">Alta</option>
+                        </select>
+                    </div>
+                    <button type="submit" class="submit-button" id="submitButton">
+                        Enviar Sugerencia
+                    </button>
+                </form>
+                <div id="successMessage" class="success-message">
+                    ¡Gracias por tu sugerencia! La revisaremos pronto.
+                </div>
+                <div id="errorMessage" class="error-message">
+                    Ha ocurrido un error. Por favor, intenta de nuevo.
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Opside Bot</h3>
+                    <p>La mejor solución para administrar tu servidor Minecraft desde Discord.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Útiles</h3>
+                    <a href="docs.html">Documentación</a>
+                    <a href="guide.html">Guía de instalación</a>
+                    <a href="faq.html">Preguntas frecuentes</a>
+                    <a href="terms.html">Términos de servicio</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Soporte</h3>
+                    <a href="#">Discord Support</a>
+                    <a href="#">Ticket de soporte</a>
+                    <a href="#">Reportar un bug</a>
+                    <a href="suggest.html">Sugerir función</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #444; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2024 Opside Bot. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Protección contra spam
+        let lastSubmissionTime = 0;
+        const SUBMISSION_COOLDOWN = 60000; // 1 minuto
+
+        // Función para generar un token CSRF
+        function generateCSRFToken() {
+            return Math.random().toString(36).substring(2) + Date.now().toString(36);
+        }
+
+        // Función para validar el formulario
+        function validateForm(formData) {
+            const name = formData.get('name');
+            const discord = formData.get('discord');
+            const description = formData.get('description');
+
+            if (name.length < 3) {
+                throw new Error('El nombre debe tener al menos 3 caracteres');
+            }
+
+            if (description.length < 20) {
+                throw new Error('La descripción debe tener al menos 20 caracteres');
+            }
+
+            return true;
+        }
+
+        // Función para enviar la sugerencia
+        async function submitSuggestion(formData) {
+            const now = Date.now();
+            if (now - lastSubmissionTime < SUBMISSION_COOLDOWN) {
+                throw new Error('Por favor, espera un momento antes de enviar otra sugerencia');
+            }
+
+            // Validar el formulario
+            validateForm(formData);
+
+            // Agregar token CSRF
+            formData.append('csrf_token', generateCSRFToken());
+
+            // Enviar a la webhook de Discord
+            const webhookUrl = 'https://discord.com/api/webhooks/1373815861822886109/94kR6FPQa5fKmguZBeDJ6LbGkxd1kvY1SJWfFPN35H8JE9g7808zb180JQnIJbCaADz7';
+            const response = await fetch(webhookUrl, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({
+                    embeds: [{
+                        title: formData.get('title'),
+                        description: formData.get('description'),
+                        color: 0x5865f2,
+                        fields: [
+                            {
+                                name: 'Tipo',
+                                value: formData.get('type'),
+                                inline: true
+                            },
+                            {
+                                name: 'Prioridad',
+                                value: formData.get('priority'),
+                                inline: true
+                            },
+                            {
+                                name: 'Sugerido por',
+                                value: `${formData.get('name')} (${formData.get('discord')})`,
+                                inline: false
+                            }
+                        ],
+                        timestamp: new Date().toISOString()
+                    }]
+                })
+            });
+
+            if (!response.ok) {
+                throw new Error('Error al enviar la sugerencia');
+            }
+
+            lastSubmissionTime = now;
+            return true;
+        }
+
+        // Manejar el envío del formulario
+        document.getElementById('suggestForm').addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const submitButton = document.getElementById('submitButton');
+            const successMessage = document.getElementById('successMessage');
+            const errorMessage = document.getElementById('errorMessage');
+            
+            submitButton.disabled = true;
+            successMessage.style.display = 'none';
+            errorMessage.style.display = 'none';
+
+            try {
+                const formData = new FormData(e.target);
+                await submitSuggestion(formData);
+                
+                successMessage.style.display = 'block';
+                e.target.reset();
+            } catch (error) {
+                errorMessage.textContent = error.message;
+                errorMessage.style.display = 'block';
+            } finally {
+                submitButton.disabled = false;
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 

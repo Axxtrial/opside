@@ -1,0 +1,396 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Preguntas Frecuentes - Opside Bot</title>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    <meta name="description" content="Preguntas frecuentes sobre Opside Bot - Controla tu servidor Minecraft desde Discord">
+    <meta name="keywords" content="Opside Bot, Discord, Minecraft, RCON, Bot, Administración, Servidor">
+    <meta name="author" content="Opside Bot">
+    <meta name="robots" content="index, follow">
+    <meta name="googlebot" content="index, follow">
+    <meta name="google" content="notranslate">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header */
+        header {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+        }
+
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0;
+        }
+
+        .logo {
+            display: flex;
+            align-items: center;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #5865f2;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            font-size: 2rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: #333;
+            font-weight: 500;
+            transition: color 0.3s;
+        }
+
+        .nav-links a:hover {
+            color: #5865f2;
+        }
+
+        /* FAQ Section */
+        .faq-section {
+            background: white;
+            padding: 80px 0;
+            min-height: calc(100vh - 200px);
+        }
+
+        .faq-content {
+            background: #f8f9fa;
+            padding: 2rem;
+            border-radius: 15px;
+            margin-top: 2rem;
+        }
+
+        .faq-category {
+            margin-bottom: 3rem;
+        }
+
+        .faq-category h2 {
+            color: #5865f2;
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #5865f2;
+        }
+
+        .faq-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            margin-bottom: 1rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .faq-item:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .faq-question {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            font-weight: bold;
+            color: #333;
+        }
+
+        .faq-question i {
+            color: #5865f2;
+            transition: transform 0.3s ease;
+        }
+
+        .faq-answer {
+            margin-top: 1rem;
+            padding-top: 1rem;
+            border-top: 1px solid #eee;
+            display: none;
+        }
+
+        .faq-item.active .faq-question i {
+            transform: rotate(180deg);
+        }
+
+        .faq-item.active .faq-answer {
+            display: block;
+        }
+
+        /* Footer */
+        footer {
+            background: #2c2f36;
+            color: white;
+            text-align: center;
+            padding: 3rem 0;
+        }
+
+        .footer-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-bottom: 2rem;
+        }
+
+        .footer-section h3 {
+            margin-bottom: 1rem;
+            color: #5865f2;
+        }
+
+        .footer-section a {
+            color: #ccc;
+            text-decoration: none;
+            display: block;
+            margin-bottom: 0.5rem;
+            transition: color 0.3s;
+        }
+
+        .footer-section a:hover {
+            color: #5865f2;
+        }
+
+        @media (max-width: 768px) {
+            .nav-links {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <nav class="container">
+            <div class="logo">
+                <i class="fab fa-discord"></i>
+                Opside Bot
+            </div>
+            <ul class="nav-links">
+                <li><a href="index.html#inicio">Inicio</a></li>
+                <li><a href="index.html#características">Características</a></li>
+                <li><a href="index.html#planes">Planes</a></li>
+                <li><a href="index.html#comandos">Comandos</a></li>
+                <li><a href="index.html#contacto">Contacto</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <!-- FAQ Section -->
+    <section class="faq-section">
+        <div class="container">
+            <h1 class="section-title">Preguntas Frecuentes</h1>
+            <div class="faq-content">
+                <div class="faq-category">
+                    <h2>Preguntas Generales</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Qué es Opside Bot?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Opside Bot es un bot de Discord diseñado para administrar servidores Minecraft. Permite ejecutar comandos, gestionar jugadores y automatizar tareas directamente desde Discord.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Es gratuito?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sí, ofrecemos un plan gratuito con funcionalidades básicas. También tenemos un plan Premium con características adicionales por $9.99/mes.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Qué versión de Minecraft es compatible?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Opside Bot es compatible con todas las versiones de Minecraft que soporten RConsole, incluyendo las versiones más recientes de Java Edition.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2>Instalación y Configuración</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Cómo instalo el bot?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Puedes seguir nuestra guía de instalación detallada en la sección "Guía de instalación". El proceso es simple y toma menos de 10 minutos.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Necesito permisos especiales?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sí, necesitas permisos de administrador en tu servidor Discord y acceso al panel de control de tu servidor Minecraft para configurar RConsole.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Puedo usar el bot en múltiples servidores?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sí, puedes usar Opside Bot en tantos servidores Discord como quieras. Cada servidor puede estar conectado a un servidor Minecraft diferente.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2>Funcionalidades y Comandos</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Qué comandos están disponibles?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            El bot incluye comandos para banear, kickear, advertir jugadores, ejecutar comandos personalizados y más. Puedes ver la lista completa en la sección "Comandos".
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Puedo crear comandos personalizados?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Sí, el plan gratuito permite 2 comandos personalizados, mientras que el plan Premium ofrece comandos personalizados ilimitados.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Cómo funcionan los logs?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Los logs registran todas las acciones realizadas a través del bot, incluyendo bans, kicks, warns y comandos ejecutados. Puedes configurar el canal de logs y los tipos de eventos a registrar.
+                        </div>
+                    </div>
+                </div>
+
+                <div class="faq-category">
+                    <h2>Soporte y Problemas</h2>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Qué hago si el bot no responde?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Verifica la conexión RConsole, los permisos del bot y reinicia la conexión con el comando /opside restart. Si el problema persiste, contacta a nuestro soporte.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Cómo reporto un bug?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            Puedes reportar bugs a través de nuestro servidor de Discord, en la sección de tickets de soporte, o directamente en GitHub.
+                        </div>
+                    </div>
+                    <div class="faq-item">
+                        <div class="faq-question">
+                            ¿Ofrecen soporte 24/7?
+                            <i class="fas fa-chevron-down"></i>
+                        </div>
+                        <div class="faq-answer">
+                            El soporte 24/7 está disponible exclusivamente para usuarios Premium. Los usuarios gratuitos pueden obtener soporte a través de nuestro servidor de Discord.
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer id="contacto">
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <h3>Opside Bot</h3>
+                    <p>La mejor solución para administrar tu servidor Minecraft desde Discord.</p>
+                </div>
+                <div class="footer-section">
+                    <h3>Enlaces Útiles</h3>
+                    <a href="#">Documentación</a>
+                    <a href="guide.html">Guía de instalación</a>
+                    <a href="faq.html">Preguntas frecuentes</a>
+                    <a href="#">Términos de servicio</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Soporte</h3>
+                    <a href="#">Discord Support</a>
+                    <a href="#">Ticket de soporte</a>
+                    <a href="#">Reportar un bug</a>
+                    <a href="#">Sugerir función</a>
+                </div>
+                <div class="footer-section">
+                    <h3>Síguenos</h3>
+                    <a href="#"><i class="fab fa-discord"></i> Discord</a>
+                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
+                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
+                </div>
+            </div>
+            <div style="border-top: 1px solid #444; padding-top: 2rem; margin-top: 2rem;">
+                <p>&copy; 2024 Opside Bot. Todos los derechos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // FAQ Accordion
+        document.querySelectorAll('.faq-item').forEach(item => {
+            item.addEventListener('click', () => {
+                item.classList.toggle('active');
+            });
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+    </script>
+</body>
+</html> 
