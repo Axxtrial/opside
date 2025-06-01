@@ -400,6 +400,17 @@ body {
 }
 
 /* Responsive Design */
+@media (max-width: 1024px) {
+    .hero h1 {
+        font-size: 3rem;
+    }
+    
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .nav-content {
         flex-direction: column;
@@ -423,8 +434,21 @@ body {
         margin-bottom: 2rem;
     }
 
+    .hero h1 {
+        font-size: 2.5rem;
+    }
+
     .hero-buttons {
         justify-content: center;
+    }
+
+    .features-grid,
+    .pricing-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .pricing-card.premium {
+        transform: none;
     }
 
     .footer-content {
@@ -436,5 +460,54 @@ body {
     .footer-links {
         flex-direction: column;
         gap: 1rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .hero h1 {
+        font-size: 2rem;
+    }
+
+    .subtitle {
+        font-size: 1.2rem;
+    }
+
+    .description {
+        font-size: 1rem;
+    }
+
+    .hero-buttons {
+        flex-direction: column;
+        gap: 1rem;
+    }
+
+    .primary-button,
+    .secondary-button {
+        width: 100%;
+        text-align: center;
+    }
+
+    .feature-card,
+    .pricing-card,
+    .contact-item {
+        padding: 1.5rem;
+    }
+}
+
+/* Asegurar que las imágenes sean responsivas */
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+/* Mejorar la legibilidad en dispositivos móviles */
+@media (max-width: 768px) {
+    body {
+        font-size: 16px;
+    }
+
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
     }
 } 
