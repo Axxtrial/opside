@@ -64,6 +64,16 @@ ul li::before {
 }
 
 /* Estilos responsivos adicionales */
+@media (max-width: 1024px) {
+    .container {
+        max-width: 90%;
+    }
+    
+    .grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
 @media (max-width: 768px) {
     .container {
         padding-left: 1rem;
@@ -76,6 +86,65 @@ ul li::before {
     
     h2 {
         font-size: 2rem;
+    }
+
+    .grid {
+        grid-template-columns: 1fr;
+    }
+
+    .flex {
+        flex-direction: column;
+    }
+
+    .text-center {
+        text-align: center;
+    }
+}
+
+@media (max-width: 480px) {
+    h1 {
+        font-size: 2rem;
+    }
+    
+    h2 {
+        font-size: 1.75rem;
+    }
+
+    .container {
+        padding-left: 0.75rem;
+        padding-right: 0.75rem;
+    }
+
+    .p-4 {
+        padding: 1rem;
+    }
+
+    .m-4 {
+        margin: 1rem;
+    }
+}
+
+/* Mejorar la accesibilidad táctil en dispositivos móviles */
+@media (hover: none) {
+    .hover-scale:hover {
+        transform: none;
+    }
+
+    a[href]:hover {
+        transform: none;
+        box-shadow: none;
+    }
+
+    .bg-gray-700:hover {
+        transform: none;
+        box-shadow: none;
+    }
+}
+
+/* Optimizar para dispositivos de alta densidad de píxeles */
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    img {
+        image-rendering: -webkit-optimize-contrast;
     }
 }
 
