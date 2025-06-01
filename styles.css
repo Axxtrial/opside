@@ -1,0 +1,237 @@
+/* Estilos personalizados */
+body {
+    font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+}
+
+/* Efectos de hover suaves */
+.hover-scale {
+    transition: transform 0.3s ease;
+}
+
+.hover-scale:hover {
+    transform: scale(1.05);
+}
+
+/* Animación de gradiente para el hero */
+@keyframes gradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+header {
+    background-size: 200% 200%;
+    animation: gradient 15s ease infinite;
+}
+
+/* Estilos para las tarjetas de características */
+.bg-gray-700 {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.bg-gray-700:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para los botones */
+a[href] {
+    transition: all 0.3s ease;
+}
+
+a[href]:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.3);
+}
+
+/* Estilos para las listas de características */
+ul li {
+    position: relative;
+    padding-left: 1.5rem;
+}
+
+ul li::before {
+    content: "✓";
+    position: absolute;
+    left: 0;
+    color: #60A5FA;
+}
+
+/* Estilos responsivos adicionales */
+@media (max-width: 768px) {
+    .container {
+        padding-left: 1rem;
+        padding-right: 1rem;
+    }
+    
+    h1 {
+        font-size: 2.5rem;
+    }
+    
+    h2 {
+        font-size: 2rem;
+    }
+}
+
+:root {
+    --primary-color: #7289da;
+    --secondary-color: #2c2f33;
+    --background-color: #23272a;
+    --text-color: #ffffff;
+    --sidebar-width: 250px;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: var(--background-color);
+    color: var(--text-color);
+    display: flex;
+    min-height: 100vh;
+}
+
+.sidebar {
+    width: var(--sidebar-width);
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    position: fixed;
+    height: 100vh;
+    overflow-y: auto;
+}
+
+.sidebar-header {
+    padding: 1rem 0;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    margin-bottom: 1rem;
+}
+
+.nav-links {
+    list-style: none;
+}
+
+.nav-links li {
+    margin-bottom: 0.5rem;
+}
+
+.nav-links a {
+    color: var(--text-color);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    padding: 0.5rem;
+    border-radius: 4px;
+    transition: background-color 0.3s;
+}
+
+.nav-links a:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.nav-links i {
+    margin-right: 0.5rem;
+}
+
+.content {
+    margin-left: var(--sidebar-width);
+    padding: 2rem;
+    flex: 1;
+}
+
+h1 {
+    font-size: 2.5rem;
+    margin-bottom: 2rem;
+    color: var(--primary-color);
+}
+
+h2 {
+    font-size: 2rem;
+    margin: 2rem 0 1rem;
+    color: var(--primary-color);
+}
+
+h3 {
+    font-size: 1.5rem;
+    margin: 1.5rem 0 1rem;
+}
+
+.commands-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+    gap: 1rem;
+    margin: 1rem 0;
+}
+
+.command-card {
+    background-color: var(--secondary-color);
+    padding: 1rem;
+    border-radius: 8px;
+    transition: transform 0.3s;
+}
+
+.command-card:hover {
+    transform: translateY(-2px);
+}
+
+.command-card h3 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+.command-card p {
+    margin-bottom: 0.5rem;
+    color: #b9bbbe;
+}
+
+code {
+    background-color: rgba(0, 0, 0, 0.2);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: 'Consolas', monospace;
+    font-size: 0.9rem;
+}
+
+.custom-commands {
+    background-color: var(--secondary-color);
+    padding: 1.5rem;
+    border-radius: 8px;
+    margin: 1rem 0;
+}
+
+.subcommand {
+    margin: 1rem 0;
+    padding: 1rem;
+    background-color: rgba(0, 0, 0, 0.2);
+    border-radius: 4px;
+}
+
+.subcommand h5 {
+    color: var(--primary-color);
+    margin-bottom: 0.5rem;
+}
+
+@media (max-width: 768px) {
+    .sidebar {
+        width: 100%;
+        height: auto;
+        position: relative;
+    }
+
+    .content {
+        margin-left: 0;
+    }
+
+    .commands-grid {
+        grid-template-columns: 1fr;
+    }
+} 
