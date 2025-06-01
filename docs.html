@@ -3,507 +3,194 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Documentación - Opside Bot</title>
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
-    <meta name="description" content="Documentación para Opside Bot - Controla tu servidor Minecraft desde Discord">
-    <meta name="keywords" content="Opside Bot, Discord, Minecraft, RCON, Bot, Administración, Servidor">
-    <meta name="author" content="Opside Bot">
-    <meta name="robots" content="index, follow">
-    <meta name="googlebot" content="index, follow">
-    <meta name="google" content="notranslate">
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: #333;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px;
-        }
-
-        /* Header */
-        header {
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-        }
-
-        nav {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 1rem 0;
-        }
-
-        .logo {
-            display: flex;
-            align-items: center;
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: #5865f2;
-        }
-
-        .logo i {
-            margin-right: 10px;
-            font-size: 2rem;
-        }
-
-        .nav-links {
-            display: flex;
-            list-style: none;
-            gap: 2rem;
-        }
-
-        .nav-links a {
-            text-decoration: none;
-            color: #333;
-            font-weight: 500;
-            transition: color 0.3s;
-        }
-
-        .nav-links a:hover {
-            color: #5865f2;
-        }
-
-        /* Documentation Section */
-        .docs-section {
-            background: white;
-            padding: 80px 0;
-            min-height: calc(100vh - 200px);
-        }
-
-        .docs-content {
-            display: grid;
-            grid-template-columns: 250px 1fr;
-            gap: 2rem;
-            margin-top: 2rem;
-        }
-
-        .docs-sidebar {
-            background: #f8f9fa;
-            padding: 1.5rem;
-            border-radius: 15px;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-
-        .docs-sidebar h3 {
-            color: #5865f2;
-            margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #5865f2;
-        }
-
-        .docs-nav {
-            list-style: none;
-        }
-
-        .docs-nav li {
-            margin-bottom: 0.5rem;
-        }
-
-        .docs-nav a {
-            color: #333;
-            text-decoration: none;
-            display: block;
-            padding: 0.5rem;
-            border-radius: 5px;
-            transition: all 0.3s;
-        }
-
-        .docs-nav a:hover {
-            background: #e9ecef;
-            color: #5865f2;
-        }
-
-        .docs-nav a.active {
-            background: #5865f2;
-            color: white;
-        }
-
-        .docs-main {
-            background: #f8f9fa;
-            padding: 2rem;
-            border-radius: 15px;
-        }
-
-        .docs-section h1 {
-            color: #333;
-            margin-bottom: 2rem;
-            text-align: center;
-        }
-
-        .docs-section h2 {
-            color: #5865f2;
-            margin: 2rem 0 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #5865f2;
-        }
-
-        .docs-section h3 {
-            color: #333;
-            margin: 1.5rem 0 1rem;
-        }
-
-        .docs-section p {
-            margin-bottom: 1rem;
-            text-align: justify;
-        }
-
-        .docs-section code {
-            background: #2c2f36;
-            color: #fff;
-            padding: 0.2rem 0.5rem;
-            border-radius: 4px;
-            font-family: 'Courier New', monospace;
-        }
-
-        .docs-section pre {
-            background: #2c2f36;
-            color: #fff;
-            padding: 1rem;
-            border-radius: 8px;
-            overflow-x: auto;
-            margin: 1rem 0;
-        }
-
-        .docs-section ul {
-            margin: 1rem 0;
-            padding-left: 2rem;
-        }
-
-        .docs-section li {
-            margin-bottom: 0.5rem;
-        }
-
-        .command-table {
-            width: 100%;
-            border-collapse: collapse;
-            margin: 1rem 0;
-        }
-
-        .command-table th,
-        .command-table td {
-            padding: 0.75rem;
-            border: 1px solid #dee2e6;
-            text-align: left;
-        }
-
-        .command-table th {
-            background: #5865f2;
-            color: white;
-        }
-
-        .command-table tr:nth-child(even) {
-            background: #f8f9fa;
-        }
-
-        /* Footer */
-        footer {
-            background: #2c2f36;
-            color: white;
-            text-align: center;
-            padding: 3rem 0;
-        }
-
-        .footer-content {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-bottom: 2rem;
-        }
-
-        .footer-section h3 {
-            margin-bottom: 1rem;
-            color: #5865f2;
-        }
-
-        .footer-section a {
-            color: #ccc;
-            text-decoration: none;
-            display: block;
-            margin-bottom: 0.5rem;
-            transition: color 0.3s;
-        }
-
-        .footer-section a:hover {
-            color: #5865f2;
-        }
-
-        @media (max-width: 768px) {
-            .nav-links {
-                display: none;
-            }
-
-            .docs-content {
-                grid-template-columns: 1fr;
-            }
-
-            .docs-sidebar {
-                position: static;
-                margin-bottom: 2rem;
-            }
-        }
-    </style>
+    <title>Opside - Docs</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
 </head>
 <body>
-    <!-- Header -->
-    <header>
-        <nav class="container">
-            <div class="logo">
-                <i class="fab fa-discord"></i>
-                Opside Bot
-            </div>
-            <ul class="nav-links">
-                <li><a href="index.html#inicio">Inicio</a></li>
-                <li><a href="index.html#características">Características</a></li>
-                <li><a href="index.html#planes">Planes</a></li>
-                <li><a href="index.html#comandos">Comandos</a></li>
-                <li><a href="index.html#contacto">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <h2>Documentación</h2>
+        </div>
+        <ul class="nav-links">
+            <li><a href="#moderacion"><i class="fas fa-shield-alt"></i> Moderación</a></li>
+            <li><a href="#embeds"><i class="fas fa-code"></i> Embeds</a></li>
+            <li><a href="#comandos-personalizados"><i class="fas fa-terminal"></i> Comandos Personalizados</a></li>
+        </ul>
+    </nav>
 
-    <!-- Documentation Section -->
-    <section class="docs-section">
-        <div class="container">
-            <h1>Documentación</h1>
-            <div class="docs-content">
-                <div class="docs-sidebar">
-                    <h3>Contenido</h3>
-                    <ul class="docs-nav">
-                        <li><a href="#introduccion" class="active">Introducción</a></li>
-                        <li><a href="#comandos-basicos">Comandos Básicos</a></li>
-                        <li><a href="#comandos-moderacion">Comandos de Moderación</a></li>
-                        <li><a href="#comandos-personalizados">Comandos Personalizados</a></li>
-                        <li><a href="#configuracion">Configuración</a></li>
-                        <li><a href="#permisos">Sistema de Permisos</a></li>
-                        <li><a href="#logs">Sistema de Logs</a></li>
+    <main class="content">
+        <h1>Documentación de Comandos del Bot</h1>
+
+        <section id="moderacion">
+            <h2><i class="fas fa-shield-alt"></i> Comandos de Moderación</h2>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <h3>/ban</h3>
+                    <p>Banea permanentemente a un jugador</p>
+                    <code>/ban [jugador] [razón]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/tempban</h3>
+                    <p>Banea temporalmente a un jugador</p>
+                    <code>/tempban [jugador] [tiempo] [razón]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/unban</h3>
+                    <p>Desbanea a un jugador</p>
+                    <code>/unban [jugador]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/kick</h3>
+                    <p>Expulsa a un jugador</p>
+                    <code>/kick [jugador] [razón]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/warn</h3>
+                    <p>Envía una advertencia</p>
+                    <code>/warn [jugador] [razón]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/unwarn</h3>
+                    <p>Elimina advertencias</p>
+                    <code>/unwarn [jugador]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/banip</h3>
+                    <p>Banea una dirección IP</p>
+                    <code>/banip [ip] [razón]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/unbanip</h3>
+                    <p>Desbanea una dirección IP</p>
+                    <code>/unbanip [ip]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/tempmute</h3>
+                    <p>Silencia temporalmente a un jugador</p>
+                    <code>/tempmute [jugador] [tiempo] [razón]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/unmute</h3>
+                    <p>Quita el silencio a un jugador</p>
+                    <code>/unmute [jugador]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/logs</h3>
+                    <p>Muestra los últimos logs de moderación</p>
+                    <code>/logs</code>
+                </div>
+            </div>
+        </section>
+
+        <section id="embeds">
+            <h2><i class="fas fa-code"></i> Comandos de Embeds</h2>
+            <div class="commands-grid">
+                <div class="command-card">
+                    <h3>/embed create</h3>
+                    <p>Crea un embed personalizado</p>
+                    <code>/embed create [nombre]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/embed list</h3>
+                    <p>Lista los embeds disponibles</p>
+                    <code>/embed list</code>
+                </div>
+                <div class="command-card">
+                    <h3>/embed delete</h3>
+                    <p>Elimina un embed</p>
+                    <code>/embed delete [nombre]</code>
+                </div>
+                <div class="command-card">
+                    <h3>/embed send</h3>
+                    <p>Envía un embed al canal</p>
+                    <code>/embed send [nombre]</code>
+                </div>
+            </div>
+        </section>
+
+        <section id="comandos-personalizados">
+            <h2><i class="fas fa-terminal"></i> Comandos Personalizados</h2>
+            <div class="custom-commands">
+                <h3>Comando /custom</h3>
+                <div class="command-details">
+                    <h4>Subcomandos:</h4>
+                    <div class="subcommand">
+                        <h5>create</h5>
+                        <p>Descripción: Crea un nuevo comando personalizado de forma interactiva</p>
+                        <code>/custom create</code>
+                        <p>Proceso:</p>
+                        <ul>
+                            <li>Abre un modal interactivo donde debes ingresar:</li>
+                            <li>- Nombre del comando</li>
+                            <li>- Comando a ejecutar (puede incluir argumentos con {arg1}, {arg2}, etc.)</li>
+                            <li>- Argumentos (separados por comas)</li>
+                            <li>- Descripción (opcional)</li>
+                        </ul>
+                        <p>Límites:</p>
+                        <ul>
+                            <li>Servidores gratuitos: máximo 2 comandos</li>
+                            <li>Servidores premium: comandos ilimitados</li>
+                        </ul>
+                    </div>
+                    <div class="subcommand">
+                        <h5>list</h5>
+                        <p>Descripción: Muestra todos los comandos personalizados disponibles</p>
+                        <code>/custom list</code>
+                        <p>Características:</p>
+                        <ul>
+                            <li>Muestra 5 comandos por página</li>
+                            <li>Incluye nombre, comando, argumentos y descripción</li>
+                            <li>Permite búsqueda de comandos</li>
+                        </ul>
+                    </div>
+                    <div class="subcommand">
+                        <h5>remove</h5>
+                        <p>Descripción: Elimina un comando personalizado existente</p>
+                        <code>/custom remove [nombre]</code>
+                        <p>Requiere: Nombre del comando a eliminar</p>
+                    </div>
+                    <div class="subcommand">
+                        <h5>edit</h5>
+                        <p>Descripción: Modifica un comando personalizado existente</p>
+                        <code>/custom edit [nombre]</code>
+                        <p>Proceso:</p>
+                        <ul>
+                            <li>Abre un modal para editar:</li>
+                            <li>- Comando a ejecutar</li>
+                            <li>- Argumentos</li>
+                            <li>- Descripción</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3>Comando /execute</h3>
+                <div class="command-details">
+                    <p>Uso: <code>/execute [nombre]</code></p>
+                    <p>Proceso:</p>
+                    <ol>
+                        <li>Verifica que el servidor esté configurado</li>
+                        <li>Busca el comando personalizado por nombre</li>
+                        <li>Si el comando tiene argumentos:
+                            <ul>
+                                <li>Abre un modal para ingresar los valores</li>
+                            </ul>
+                        </li>
+                        <li>Verifica que el servidor esté online</li>
+                        <li>Ejecuta el comando a través de RCON</li>
+                        <li>Muestra el resultado de la ejecución</li>
+                    </ol>
+                    <p>Características:</p>
+                    <ul>
+                        <li>Verificación del estado del servidor antes de ejecutar</li>
+                        <li>Manejo de timeouts (5 segundos para conexión, 10 segundos para ejecución)</li>
+                        <li>Registro de logs de ejecución</li>
+                        <li>Respuestas detalladas con embeds informativos</li>
+                        <li>Manejo de errores con mensajes descriptivos</li>
                     </ul>
                 </div>
-
-                <div class="docs-main">
-                    <section id="introduccion">
-                        <h2>Introducción</h2>
-                        <p>Opside Bot es una potente herramienta que permite administrar tu servidor Minecraft directamente desde Discord. Esta documentación te guiará a través de todas las funcionalidades y características disponibles.</p>
-                        
-                        <h3>Requisitos</h3>
-                        <ul>
-                            <li>Servidor Discord con permisos de administrador</li>
-                            <li>Servidor Minecraft con RConsole habilitado</li>
-                            <li>Acceso al panel de control del servidor</li>
-                        </ul>
-                    </section>
-
-                    <section id="comandos-basicos">
-                        <h2>Comandos Básicos</h2>
-                        <p>Estos son los comandos básicos disponibles para todos los usuarios:</p>
-                        
-                        <table class="command-table">
-                            <thead>
-                                <tr>
-                                    <th>Comando</th>
-                                    <th>Descripción</th>
-                                    <th>Uso</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>/status</code></td>
-                                    <td>Muestra el estado del servidor</td>
-                                    <td><code>/status</code></td>
-                                </tr>
-                                <tr>
-                                    <td><code>/list</code></td>
-                                    <td>Lista los jugadores conectados</td>
-                                    <td><code>/list</code></td>
-                                </tr>
-                                <tr>
-                                    <td><code>/tps</code></td>
-                                    <td>Muestra el TPS del servidor</td>
-                                    <td><code>/tps</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <section id="comandos-moderacion">
-                        <h2>Comandos de Moderación</h2>
-                        <p>Comandos para la gestión de jugadores y moderación del servidor:</p>
-
-                        <table class="command-table">
-                            <thead>
-                                <tr>
-                                    <th>Comando</th>
-                                    <th>Descripción</th>
-                                    <th>Uso</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><code>/ban</code></td>
-                                    <td>Banea a un jugador</td>
-                                    <td><code>/ban [jugador] [razón]</code></td>
-                                </tr>
-                                <tr>
-                                    <td><code>/unban</code></td>
-                                    <td>Desbanea a un jugador</td>
-                                    <td><code>/unban [jugador]</code></td>
-                                </tr>
-                                <tr>
-                                    <td><code>/kick</code></td>
-                                    <td>Expulsa a un jugador</td>
-                                    <td><code>/kick [jugador] [razón]</code></td>
-                                </tr>
-                                <tr>
-                                    <td><code>/warn</code></td>
-                                    <td>Envía una advertencia</td>
-                                    <td><code>/warn [jugador] [razón]</code></td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </section>
-
-                    <section id="comandos-personalizados">
-                        <h2>Comandos Personalizados</h2>
-                        <p>Crea tus propios comandos personalizados para automatizar tareas:</p>
-
-                        <h3>Crear un comando personalizado</h3>
-                        <pre>/opside custom add "nombre" "comando"</pre>
-
-                        <h3>Ejemplos</h3>
-                        <pre>/opside custom add "startevent" "startevent %event%"
-/opside custom add "stopevent" "stopevent %event%"</pre>
-                    </section>
-
-                    <section id="configuracion">
-                        <h2>Configuración</h2>
-                        <p>Configura el bot según tus necesidades:</p>
-
-                        <h3>Configuración básica</h3>
-                        <pre>/opside setup</pre>
-
-                        <h3>Configuración de canales</h3>
-                        <pre>/opside channel set #canal-comandos
-/opside channel set #canal-logs</pre>
-
-                    </section>
-
-                    <section id="permisos">
-                        <h2>Sistema de Permisos</h2>
-                        <p>Gestiona quién puede usar qué comandos:</p>
-
-                        <h3>Agregar permisos</h3>
-                        <pre>/opside permissions add @rol</pre>
-
-                        <h3>Remover permisos</h3>
-                        <pre>/opside permissions remove @rol</pre>
-
-                        <h3>Ver permisos</h3>
-                        <pre>/opside permissions list</pre>
-                    </section>
-
-                    <section id="logs">
-                        <h2>Sistema de Logs</h2>
-                        <p>Configura y gestiona los logs del servidor:</p>
-
-                        <h3>Configurar canal de logs</h3>
-                        <pre>/opside logs channel #canal-logs</pre>
-
-                        <h3>Ver logs recientes</h3>
-                        <pre>/opside logs recent [cantidad]</pre>
-                    </section>
-                </div>
             </div>
-        </div>
-    </section>
-
-    <!-- Footer -->
-    <footer id="contacto">
-        <div class="container">
-            <div class="footer-content">
-                <div class="footer-section">
-                    <h3>Opside Bot</h3>
-                    <p>La mejor solución para administrar tu servidor Minecraft desde Discord.</p>
-                </div>
-                <div class="footer-section">
-                    <h3>Enlaces Útiles</h3>
-                    <a href="docs.html">Documentación</a>
-                    <a href="guide.html">Guía de instalación</a>
-                    <a href="faq.html">Preguntas frecuentes</a>
-                    <a href="terms.html">Términos de servicio</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Soporte</h3>
-                    <a href="#">Discord Support</a>
-                    <a href="#">Ticket de soporte</a>
-                    <a href="#">Reportar un bug</a>
-                    <a href="suggest.html">Sugerir función</a>
-                </div>
-                <div class="footer-section">
-                    <h3>Síguenos</h3>
-                    <a href="#"><i class="fab fa-discord"></i> Discord</a>
-                    <a href="#"><i class="fab fa-twitter"></i> Twitter</a>
-                    <a href="#"><i class="fab fa-github"></i> GitHub</a>
-                </div>
-            </div>
-            <div style="border-top: 1px solid #444; padding-top: 2rem; margin-top: 2rem;">
-                <p>&copy; 2024 Opside Bot. Todos los derechos reservados.</p>
-            </div>
-        </div>
-    </footer>
-
-    <script>
-        // Smooth scrolling for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
-
-        // Update active nav item on scroll
-        const sections = document.querySelectorAll('section');
-        const navLinks = document.querySelectorAll('.docs-nav a');
-
-        window.addEventListener('scroll', () => {
-            let current = '';
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                if (window.scrollY >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === `#${current}`) {
-                    link.classList.add('active');
-                }
-            });
-        });
-    </script>
+        </section>
+    </main>
 </body>
 </html> 
