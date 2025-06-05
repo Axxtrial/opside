@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Guía de Configuración - Bot Opside</title>
+    <link rel="stylesheet" href="setupguide.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-content">
+            <div class="logo">
+                <i class="fab fa-discord"></i>
+                <span>Opside Bot</span>
+            </div>
+            <button class="menu-toggle" aria-label="Toggle menu">
+                <i class="fas fa-bars"></i>
+            </button>
+            <div class="nav-links">
+                <a href="#requisitos">Requisitos</a>
+                <a href="#configuracion">Configuración</a>
+                <a href="#solucion">Solución de Problemas</a>
+            </div>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <h1>Guía de Configuración del Bot Opside</h1>
+            <p>Configura tu bot de Discord para Minecraft en pocos pasos</p>
+        </div>
+    </header>
+
+    <main>
+        <section id="requisitos" class="section">
+            <div class="container">
+                <h2><i class="fas fa-list-check"></i> Requisitos Previos</h2>
+                <div class="requirements-grid">
+                    <div class="requirement-card">
+                        <i class="fas fa-server"></i>
+                        <h3>Servidor Discord</h3>
+                        <p>Un servidor de Discord donde tengas permisos de administrador</p>
+                    </div>
+                    <div class="requirement-card">
+                        <i class="fas fa-gamepad"></i>
+                        <h3>Servidor Minecraft</h3>
+                        <p>Un servidor de Minecraft con RCON habilitado</p>
+                    </div>
+                    <div class="requirement-card">
+                        <i class="fas fa-robot"></i>
+                        <h3>Bot Invitado</h3>
+                        <p>El bot debe estar invitado a tu servidor de Discord</p>
+                    </div>
+                </div>
+                <div class="important-note">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Requisito Importante: Puerto del Bot</h3>
+                    <p>El bot requiere un puerto dedicado para funcionar:</p>
+                    <ul>
+                        <li>Puerto por defecto: <strong>25575</strong></li>
+                        <li>Este puerto DEBE ser diferente al puerto que use tu servidor de Minecraft</li>
+                        <li>Ejemplo: si a tu servidor te conectas con la ip play.tuservidor.net:25565 el puerto debe ser diferente a 25565</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="configuracion" class="section">
+            <div class="container">
+                <h2><i class="fas fa-gear"></i> Pasos de Configuración</h2>
+                <div class="steps">
+                    <div class="step">
+                        <div class="step-number">1</div>
+                        <div class="step-content">
+                            <h3>Invitar el Bot a tu Servidor de Discord</h3>
+                            <ol>
+                                <li>Haz clic en el enlace de invitación proporcionado por el administrador del bot</li>
+                                <li>Selecciona tu servidor de Discord</li>
+                                <li>Asegúrate de que el bot tenga los permisos necesarios (especialmente permisos de administrador)</li>
+                            </ol>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">2</div>
+                        <div class="step-content">
+                            <h3>Configurar RCON en tu Servidor Minecraft</h3>
+                            <ol>
+                                <li>Abre el archivo `server.properties` en la carpeta raíz de tu servidor Minecraft</li>
+                                <li>Busca o agrega las siguientes líneas:</li>
+                            </ol>
+                            <div class="code-block">
+                                <pre>enable-rcon=true
+rcon.password=tu_contraseña_segura
+rcon.port=25575</pre>
+                            </div>
+                            <p>Notas importantes:</p>
+                            <ul>
+                                <li>Reemplaza `tu_contraseña_segura` con una contraseña segura (guarda esta contraseña, la necesitarás después)</li>
+                                <li>El puerto `25575` es el predeterminado, pero puedes cambiarlo si lo deseas</li>
+                                <li>Guarda el archivo y reinicia tu servidor Minecraft</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">3</div>
+                        <div class="step-content">
+                            <h3>Configurar el Bot en Discord</h3>
+                            <ol>
+                                <li>En tu servidor de Discord, escribe el comando `/setup`</li>
+                                <li>Se abrirá una ventana modal donde deberás ingresar la siguiente información:</li>
+                            </ol>
+                            <ul>
+                                <li><strong>IP del servidor Minecraft:</strong> La IP pública de tu servidor (ejemplo: play.tuservidor.com)</li>
+                                <li><strong>Puerto del servidor Minecraft:</strong> El puerto de juego (por defecto: 25565)</li>
+                                <li><strong>IP RCON:</strong> La IP donde se ejecuta tu servidor (si es local, usa 127.0.0.1)</li>
+                                <li><strong>Puerto RCON:</strong> El puerto que configuraste en server.properties (por defecto: 25575)</li>
+                                <li><strong>Contraseña RCON:</strong> La contraseña que configuraste en server.properties</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="step">
+                        <div class="step-number">4</div>
+                        <div class="step-content">
+                            <h3>Verificar la Configuración</h3>
+                            <ol>
+                                <li>Después de ingresar todos los datos, el bot intentará conectarse a tu servidor</li>
+                                <li>Si todo está correcto, verás un mensaje de confirmación</li>
+                                <li>Si hay algún error, el bot te mostrará un mensaje detallado con la solución</li>
+                            </ol>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="solucion" class="section">
+            <div class="container">
+                <h2><i class="fas fa-wrench"></i> Solución de Problemas</h2>
+                <div class="troubleshooting-grid">
+                    <div class="trouble-card">
+                        <h3>Error de Conexión RCON</h3>
+                        <p>Si recibes un error de conexión, verifica:</p>
+                        <ul>
+                            <li>Que el servidor Minecraft esté en línea</li>
+                            <li>Que la IP y puerto sean correctos</li>
+                            <li>Que el puerto RCON esté abierto en tu firewall</li>
+                            <li>Que RCON esté habilitado en server.properties</li>
+                        </ul>
+                    </div>
+                    <div class="trouble-card">
+                        <h3>Error de Autenticación</h3>
+                        <p>Si recibes un error de autenticación:</p>
+                        <ul>
+                            <li>Verifica que la contraseña RCON sea exactamente la misma que configuraste</li>
+                            <li>Asegúrate de que la contraseña no contenga caracteres especiales</li>
+                        </ul>
+                    </div>
+                    <div class="trouble-card">
+                        <h3>RCON Deshabilitado</h3>
+                        <p>Si RCON está deshabilitado:</p>
+                        <ul>
+                            <li>Abre server.properties</li>
+                            <li>Establece `enable-rcon=true`</li>
+                            <li>Reinicia tu servidor Minecraft</li>
+                        </ul>
+                    </div>
+                    <div class="trouble-card">
+                        <h3>Error de Puerto en Uso</h3>
+                        <p>Si el puerto 3000 (o el que hayas configurado) está en uso:</p>
+                        <ul>
+                            <li>Verifica que no haya otro servicio usando el mismo puerto</li>
+                            <li>Puedes cambiar el puerto en la configuración del bot</li>
+                            <li>Asegúrate de que el puerto esté abierto en tu firewall</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section class="section">
+            <div class="container">
+                <h2><i class="fas fa-info-circle"></i> Notas Importantes</h2>
+                <div class="notes-grid">
+                    <div class="note-card">
+                        <i class="fas fa-shield-alt"></i>
+                        <p>Mantén tu contraseña RCON segura y no la compartas</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-user-shield"></i>
+                        <p>El bot necesita permisos de administrador para funcionar correctamente</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-sync"></i>
+                        <p>Si cambias la configuración de tu servidor, deberás ejecutar `/setup` nuevamente</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-lock"></i>
+                        <p>Para mayor seguridad, considera usar una contraseña RCON diferente a la contraseña de administrador del servidor</p>
+                    </div>
+                    <div class="note-card">
+                        <i class="fas fa-fire"></i>
+                        <p>Asegúrate de que el puerto del bot esté abierto en tu firewall</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>¿Necesitas ayuda? <a href="#" class="support-link">Únete a nuestro servidor de soporte</a></p>
+        </div>
+    </footer>
+    <script>
+        document.querySelector('.menu-toggle').addEventListener('click', function() {
+            document.querySelector('.nav-links').classList.toggle('active');
+        });
+
+        // Cerrar el menú al hacer clic en un enlace
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                document.querySelector('.nav-links').classList.remove('active');
+            });
+        });
+    </script>
+</body>
+</html> 
